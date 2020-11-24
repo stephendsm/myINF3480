@@ -1,0 +1,17 @@
+base_path: 'crustcrawler'
+analyzers:
+        joints:
+                type: GenericAnalyzer
+                path: Joints
+                contains: 'servo'
+                remove_prefix: 'crustcrawler crustcrawler_hardware:'
+        connection:
+                type: GenericAnalyzer
+                path: Connection
+                contains: 'connection'
+                remove_prefix: 'crustcrawler crustcrawler_hardware:'
+        read_rate:
+                type: GenericAnalyzer
+                path: Read rate
+                contains: 'read topic status'
+                remove_prefix: 'crustcrawler crustcrawler_hardware:'

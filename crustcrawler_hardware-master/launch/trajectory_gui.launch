@@ -1,0 +1,20 @@
+<?xml version="1.0" ?>
+<launch>
+	<!-- Arguments for which controller type to utilize -->
+	<arg name="full_arm" doc="Control full arm?" />
+
+	<!-- Launch hardware interface node -->
+	<include file="$(find crustcrawler_hardware)/launch/control.launch">
+		<arg name="control" value="trajectory" />
+		<arg name="full_arm" value="$(arg full_arm)" />
+	</include>
+	<!-- Launch diagnostic aggregator -->
+	<include file="$(find crustcrawler_hardware)/launch/monitoring.launch">
+		<arg name="gui" value="false" />
+	</include>
+	<!-- Launch RQT gui -->
+	<node name="trajectory_gui" pkg="rqt_gui" type="rqt_gui"
+		required="true"
+		args="--perspective-file $(find crustcrawler_hardware)/config/trajectory.perspective" />
+</launch>
+
