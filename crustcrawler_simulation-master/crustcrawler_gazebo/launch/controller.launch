@@ -1,0 +1,16 @@
+<?xml version="1.0" ?>
+<launch>
+	<!-- Should the gripper be enabled -->
+	<arg name="gripper_enabled" default="false" />
+	<arg name="control" default="position" doc="Control type for joints" />
+
+	<!-- Launch robot in Gazebo: -->
+	<include file="$(find crustcrawler_gazebo)/launch/empty_world.launch">
+		<arg name="gripper_enabled" value="$(arg gripper_enabled)" />
+	</include>
+	<!-- Launch control code -->
+	<include file="$(find crustcrawler_control)/launch/control.launch">
+		<arg name="control" value="$(arg control)" />
+		<arg name="full_arm" value="true" />
+	</include>
+</launch>
