@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<launch>
+  <group ns="in3140">
+    <node pkg="in3140" name="coords_publisher_node" type="coords_publisher.py" output="screen"/>
+    <node pkg="in3140" name="coords_subscriber_node" type="coords_listener.py" output="screen"/>
+  </group>
+</launch>
