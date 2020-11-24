@@ -1,0 +1,6 @@
+controller_list:
+  - name: "/crustcrawler"
+    action_ns: controller/follow_joint_trajectory
+    type: FollowJointTrajectory
+    default: true
+    joints: [joint_1, joint_2, joint_3]

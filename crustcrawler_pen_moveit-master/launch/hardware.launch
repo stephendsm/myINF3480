@@ -1,0 +1,24 @@
+<launch>
+
+  <include file="$(find crustcrawler_hardware)/launch/control.launch">
+    <arg name="control" value="trajectory" />
+    <arg name="full_arm" value="false" />
+  </include>
+
+  <group ns="crustcrawler">
+    <!-- Load the URDF, SRDF and other .yaml configuration files on the param server -->
+    <include file="$(find crustcrawler_pen_moveit)/launch/planning_context.launch">
+      <arg name="load_robot_description" value="true"/>
+    </include>
+
+    <!-- Run Rviz and load the default config to see the state of the move_group node -->
+    <include file="$(find crustcrawler_pen_moveit)/launch/moveit_rviz.launch">
+      <arg name="config" value="true"/>
+    </include>
+
+    <!-- Run the main MoveIt! executable without trajectory execution (we do not have controllers configured by default) -->
+    <include file="$(find crustcrawler_pen_moveit)/launch/move_group.launch">
+      <arg name="allow_trajectory_execution" value="true"/>
+    </include>
+  </group>
+</launch>
